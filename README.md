@@ -21,15 +21,6 @@ This repo implements a portfolio-ready **Lightning Web Component + Apex service 
 
 The component consolidates pricing execution, adjustments, tier logic, procedure decisions, and amendment-style deltas into one record-page experience. It is designed to be **safe to deploy in a generic org** while still becoming useful in a Revenue Cloud org through runtime object discovery.
 
-## Why recruiters stop scrolling
-
-- It addresses a real Revenue Cloud support and deal-desk problem instead of another CRUD sample.
-- It demonstrates architectural judgment: dynamic schema discovery, safe fallbacks, security enforcement, and UI storytelling.
-- It gives you a narrative that is easy to demo in under two minutes.
-- It is packaged to look like a polished product concept, not a scratch-org experiment.
-
-## Why this stands out
-
 Most sample Salesforce repos stop at CRUD screens. This one is intentionally closer to real architecture work:
 
 - Solves a legitimate Revenue Cloud observability problem instead of another generic quote calculator.
