@@ -1,0 +1,440 @@
+<template>
+    <div class="shell">
+        <template if:true={isLoading}>
+            <div class="busy-state">
+                <lightning-spinner alternative-text="Loading pricing trace" size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <section class="hero">
+            <div class="hero__copy">
+                <p class="eyebrow">Revenue Cloud Observability</p>
+                <h1>Pricing Trace Explorer</h1>
+                <p class="summary">{summary}</p>
+
+                <div class="chip-row">
+                    <span class={modeBadgeClass}>{modeLabel}</span>
+                    <template if:true={canReplay}>
+                        <span class="chip">Replay Ready</span>
+                    </template>
+                    <template if:true={useDemoMode}>
+                        <span class="chip chip_demo">Demo Dataset</span>
+                    </template>
+                    <span class="chip chip_context">{contextLabel}</span>
+                </div>
+            </div>
+
+            <div class="hero__actions">
+                <lightning-input
+                    checked={useDemoMode}
+                    class="toggle"
+                    label="Demo Mode"
+                    message-toggle-active="On"
+                    message-toggle-inactive="Off"
+                    onchange={handleDemoToggle}
+                    type="toggle"
+                ></lightning-input>
+
+                <div class="action-row">
+                    <lightning-button
+                        icon-name="utility:refresh"
+                        label="Refresh"
+                        onclick={handleRefresh}
+                        variant="neutral"
+                    ></lightning-button>
+                    <lightning-button
+                        disabled={disableReplay}
+                        icon-name="utility:play"
+                        label="Replay"
+                        onclick={handleOpenReplay}
+                        variant="brand"
+                    ></lightning-button>
+                </div>
+            </div>
+        </section>
+
+        <template if:true={supportMessage}>
+            <section class="support-banner">
+                <lightning-icon icon-name="utility:hint" size="x-small"></lightning-icon>
+                <span>{supportMessage}</span>
+            </section>
+        </template>
+
+        <template if:true={hasError}>
+            <section class="panel panel_error">
+                <div class="panel__header">
+                    <div>
+                        <p class="panel__eyebrow">Runtime Error</p>
+                        <h2>Trace request failed</h2>
+                    </div>
+                </div>
+                <p class="error-copy">{errorMessage}</p>
+            </section>
+        </template>
+
+        <template if:true={hasTrace}>
+            <section class="metric-grid">
+                <template for:each={metricCards} for:item="metric">
+                    <article class={metric.className} key={metric.key}>
+                        <p class="metric__label">{metric.label}</p>
+                        <p class="metric__value">{metric.value}</p>
+                    </article>
+                </template>
+            </section>
+
+            <section class="main-grid">
+                <article class="panel panel_story">
+                    <div class="panel__header">
+                        <div>
+                            <p class="panel__eyebrow">Commercial Delta</p>
+                            <h2>What changed</h2>
+                        </div>
+                    </div>
+
+                    <div class="delta-grid">
+                        <div class="delta-card">
+                            <span class="delta-card__label">Previous</span>
+                            <strong>{oldPriceLabel}</strong>
+                        </div>
+                        <div class="delta-card">
+                            <span class="delta-card__label">Current</span>
+                            <strong>{finalPriceLabel}</strong>
+                        </div>
+                        <div class="delta-card delta-card_emphasis">
+                            <span class="delta-card__label">Delta</span>
+                            <strong>{deltaLabel}</strong>
+                        </div>
+                    </div>
+
+                    <template if:true={hasTopCauses}>
+                        <div class="cause-list">
+                            <template for:each={topCauses} for:item="cause">
+                                <div class="cause" key={cause.key}>
+                                    <span class={cause.directionClass}>{cause.amountDisplay}</span>
+                                    <div>
+                                        <p class="cause__title">{cause.name}</p>
+                                        <p class="cause__copy">{cause.description}</p>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                </article>
+
+                <article class="panel panel_timeline">
+                    <div class="panel__header">
+                        <div>
+                            <p class="panel__eyebrow">Execution Timeline</p>
+                            <h2>Pricing path</h2>
+                        </div>
+                    </div>
+
+                    <template if:true={hasTimeline}>
+                        <div class="timeline">
+                            <template for:each={timelineItems} for:item="item">
+                                <article class={item.className} key={item.key}>
+                                    <div class="timeline__rail">
+                                        <span class={item.markerClass}></span>
+                                    </div>
+                                    <div class="timeline__body">
+                                        <div class="timeline__heading">
+                                            <div>
+                                                <h3>{item.label}</h3>
+                                                <p>{item.detail}</p>
+                                            </div>
+                                            <div class="timeline__money">
+                                                <strong>{item.amountDisplay}</strong>
+                                                <span>{item.runningTotalDisplay}</span>
+                                            </div>
+                                        </div>
+                                        <div class="timeline__meta">
+                                            <span>{item.source}</span>
+                                            <template if:true={item.timestampLabel}>
+                                                <span>{item.timestampLabel}</span>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </article>
+                            </template>
+                        </div>
+                    </template>
+
+                    <template if:false={hasTimeline}>
+                        <div class="empty-copy">
+                            <p>No timeline rows were recovered for this record yet.</p>
+                            <lightning-button label="Preview Demo Trace" onclick={handleEnableDemo} variant="brand-outline"></lightning-button>
+                        </div>
+                    </template>
+                </article>
+            </section>
+
+            <section class="secondary-grid">
+                <article class="panel">
+                    <div class="panel__header">
+                        <div>
+                            <p class="panel__eyebrow">Adjustment Breakdown</p>
+                            <h2>Line-item impacts</h2>
+                        </div>
+                    </div>
+
+                    <template if:true={hasAdjustments}>
+                        <div class="adjustment-list">
+                            <template for:each={adjustmentCards} for:item="adjustment">
+                                <article class={adjustment.className} key={adjustment.key}>
+                                    <div>
+                                        <p class="adjustment__category">{adjustment.category}</p>
+                                        <h3>{adjustment.name}</h3>
+                                        <p>{adjustment.description}</p>
+                                    </div>
+                                    <div class="adjustment__money">
+                                        <strong>{adjustment.amountDisplay}</strong>
+                                        <span>{adjustment.source}</span>
+                                        <template if:true={adjustment.overridden}>
+                                            <span class="chip chip_warning">Overridden</span>
+                                        </template>
+                                    </div>
+                                </article>
+                            </template>
+                        </div>
+                    </template>
+
+                    <template if:false={hasAdjustments}>
+                        <p class="empty-copy">No adjustment rows were recovered from the active trace sources.</p>
+                    </template>
+                </article>
+
+                <article class="panel">
+                    <div class="panel__header">
+                        <div>
+                            <p class="panel__eyebrow">Source Health</p>
+                            <h2>Connected trace objects</h2>
+                        </div>
+                    </div>
+
+                    <div class="source-list">
+                        <template for:each={sourceCards} for:item="source">
+                            <article class={source.className} key={source.objectApiName}>
+                                <div>
+                                    <p class="source__name">{source.logicalName}</p>
+                                    <p class="source__api">{source.objectApiName}</p>
+                                </div>
+                                <div class="source__meta">
+                                    <strong>{source.countLabel}</strong>
+                                    <span>{source.note}</span>
+                                </div>
+                            </article>
+                        </template>
+                    </div>
+                </article>
+            </section>
+
+            <section class="secondary-grid">
+                <article class="panel">
+                    <div class="panel__header">
+                        <div>
+                            <p class="panel__eyebrow">Tier Visualizer</p>
+                            <h2>Usage transparency</h2>
+                        </div>
+                    </div>
+
+                    <template if:true={hasTiers}>
+                        <div class="tier-table" role="table">
+                            <div class="tier-table__row tier-table__row_head" role="row">
+                                <span role="columnheader">Tier</span>
+                                <span role="columnheader">Range</span>
+                                <span role="columnheader">Rate</span>
+                                <span role="columnheader">Applied Qty</span>
+                                <span role="columnheader">Applied Value</span>
+                            </div>
+                            <template for:each={tierRows} for:item="tier">
+                                <div class="tier-table__row" key={tier.key} role="row">
+                                    <span role="cell">{tier.tierName}</span>
+                                    <span role="cell">{tier.rangeLabel}</span>
+                                    <span role="cell">{tier.rateDisplay}</span>
+                                    <span role="cell">{tier.quantityDisplay}</span>
+                                    <span role="cell">{tier.valueDisplay}</span>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+
+                    <template if:false={hasTiers}>
+                        <p class="empty-copy">No tier records were recovered. This is expected for flat pricing scenarios.</p>
+                    </template>
+                </article>
+
+                <article class="panel">
+                    <div class="panel__header">
+                        <div>
+                            <p class="panel__eyebrow">Procedure Tree</p>
+                            <h2>Decision transparency</h2>
+                        </div>
+                    </div>
+
+                    <template if:true={hasProcedureNodes}>
+                        <div class="procedure-list">
+                            <template for:each={procedureRows} for:item="node">
+                                <article class={node.className} key={node.key} style={node.indentStyle}>
+                                    <div class="procedure__rail"></div>
+                                    <div class="procedure__body">
+                                        <div class="procedure__heading">
+                                            <h3>{node.label}</h3>
+                                            <span class={node.outcomeClass}>{node.outcome}</span>
+                                        </div>
+                                        <p>{node.detail}</p>
+                                    </div>
+                                </article>
+                            </template>
+                        </div>
+                    </template>
+
+                    <template if:false={hasProcedureNodes}>
+                        <p class="empty-copy">No procedure-resolution nodes were returned by the accessible trace sources.</p>
+                    </template>
+                </article>
+            </section>
+
+            <template if:true={hasRiskFlags}>
+                <section class="panel panel_risks">
+                    <div class="panel__header">
+                        <div>
+                            <p class="panel__eyebrow">Risk Radar</p>
+                            <h2>Operational flags</h2>
+                        </div>
+                    </div>
+
+                    <div class="risk-list">
+                        <template for:each={riskCards} for:item="risk">
+                            <article class={risk.className} key={risk.key}>
+                                <div class="risk__heading">
+                                    <h3>{risk.title}</h3>
+                                    <span class={risk.badgeClass}>{risk.severityLabel}</span>
+                                </div>
+                                <p>{risk.detail}</p>
+                            </article>
+                        </template>
+                    </div>
+                </section>
+            </template>
+        </template>
+
+        <template if:true={isReplayOpen}>
+            <section class="overlay">
+                <div class="overlay__backdrop" onclick={handleCloseReplay}></div>
+                <div
+                    aria-describedby="replay-description"
+                    aria-labelledby="replay-heading"
+                    aria-modal="true"
+                    class="replay-modal"
+                    role="dialog"
+                >
+                    <div class="replay-modal__header">
+                        <div>
+                            <p class="panel__eyebrow">Headless Replay</p>
+                            <h2 id="replay-heading">Sandbox pricing simulation</h2>
+                            <p id="replay-description">
+                                Tune commercial inputs, run a projection, and compare the proposed outcome before saving.
+                            </p>
+                        </div>
+                        <lightning-button-icon
+                            alternative-text="Close replay panel"
+                            icon-name="utility:close"
+                            onclick={handleCloseReplay}
+                            variant="border-filled"
+                        ></lightning-button-icon>
+                    </div>
+
+                    <div class="replay-modal__body">
+                        <div class="replay-form">
+                            <lightning-input
+                                data-field="quantity"
+                                label="Quantity"
+                                onchange={handleReplayInput}
+                                type="number"
+                                value={replayQuantity}
+                            ></lightning-input>
+                            <lightning-combobox
+                                data-field="regionCode"
+                                label="Region"
+                                onchange={handleReplayInput}
+                                options={regionOptions}
+                                value={replayRegionCode}
+                            ></lightning-combobox>
+                            <lightning-input
+                                checked={replayPremiumSupport}
+                                data-field="premiumSupport"
+                                label="Premium Support"
+                                onchange={handleReplayInput}
+                                type="toggle"
+                            ></lightning-input>
+                        </div>
+
+                        <div class="action-row action-row_modal">
+                            <lightning-button
+                                disabled={isReplaying}
+                                label="Run Replay"
+                                onclick={handleRunReplay}
+                                variant="brand"
+                            ></lightning-button>
+                            <template if:true={isReplaying}>
+                                <lightning-spinner alternative-text="Running replay" size="small"></lightning-spinner>
+                            </template>
+                        </div>
+
+                        <template if:true={hasReplayResponse}>
+                            <section class="replay-summary">
+                                <div class="delta-grid">
+                                    <div class="delta-card">
+                                        <span class="delta-card__label">Projected Price</span>
+                                        <strong>{replayProjectedPriceLabel}</strong>
+                                    </div>
+                                    <div class="delta-card delta-card_emphasis">
+                                        <span class="delta-card__label">Projected Delta</span>
+                                        <strong>{replayDeltaLabel}</strong>
+                                    </div>
+                                </div>
+                                <p>{replayMessage}</p>
+                            </section>
+
+                            <div class="timeline replay-timeline">
+                                <template for:each={replayImpactItems} for:item="item">
+                                    <article class={item.className} key={item.key}>
+                                        <div class="timeline__rail">
+                                            <span class={item.markerClass}></span>
+                                        </div>
+                                        <div class="timeline__body">
+                                            <div class="timeline__heading">
+                                                <div>
+                                                    <h3>{item.label}</h3>
+                                                    <p>{item.detail}</p>
+                                                </div>
+                                                <div class="timeline__money">
+                                                    <strong>{item.amountDisplay}</strong>
+                                                    <span>{item.runningTotalDisplay}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </template>
+                            </div>
+
+                            <template if:true={hasReplayNotices}>
+                                <div class="risk-list">
+                                    <template for:each={replayNoticeCards} for:item="notice">
+                                        <article class={notice.className} key={notice.key}>
+                                            <div class="risk__heading">
+                                                <h3>{notice.title}</h3>
+                                                <span class={notice.badgeClass}>{notice.severityLabel}</span>
+                                            </div>
+                                            <p>{notice.detail}</p>
+                                        </article>
+                                    </template>
+                                </div>
+                            </template>
+                        </template>
+                    </div>
+                </div>
+            </section>
+        </template>
+    </div>
+</template>

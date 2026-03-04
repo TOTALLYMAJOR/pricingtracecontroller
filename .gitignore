@@ -1,0 +1,7 @@
+.sfdx/
+.sf/
+.vscode/
+coverage/
+node_modules/
+*.log
+.DS_Store

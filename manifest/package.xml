@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>PricingTraceController</members>
+        <members>PricingTraceService</members>
+        <members>PricingTraceServiceTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>pricingTraceExplorer</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>Pricing_Trace_Explorer</members>
+        <name>PermissionSet</name>
+    </types>
+    <version>65.0</version>
+</Package>

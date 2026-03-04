@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>PricingTraceController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PricingTraceService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <description>Access for the Pricing Trace Explorer starter. Revenue Cloud object permissions must be granted separately for live trace discovery.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Pricing Trace Explorer</label>
+</PermissionSet>
