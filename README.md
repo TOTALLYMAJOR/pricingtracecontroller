@@ -63,6 +63,13 @@ These are illustrated preview assets based on the shipped demo narrative, so the
   <img src="docs/assets/replay-console.svg" alt="Pricing Trace Explorer replay console" width="49%" />
 </p>
 
+## Share kit
+
+If you are using this repo in applications, portfolio reviews, or LinkedIn posts, these files give you a reusable narrative:
+
+- [Demo workflow](docs/promo/demo-workflow.md)
+- [Application and LinkedIn copy](docs/promo/share-copy.md)
+
 ## Demo script
 
 ### 30-second pitch
