@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc">
+  <title id="title">Pricing Trace Explorer Replay Console</title>
+  <desc id="desc">Illustrated replay console showing a simulated headless pricing projection.</desc>
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10233c"/>
+      <stop offset="100%" stop-color="#253f63"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fffdf8"/>
+      <stop offset="100%" stop-color="#eef5f3"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="20" flood-color="#091423" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="980" fill="url(#page)"/>
+  <rect x="0" y="0" width="1600" height="980" fill="#0d1e34" opacity="0.36"/>
+
+  <g transform="translate(168 96)" filter="url(#shadow)">
+    <rect x="0" y="0" width="1264" height="788" rx="32" fill="url(#panel)"/>
+
+    <text x="40" y="42" font-size="16" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#486177" letter-spacing="1.8">HEADLESS REPLAY</text>
+    <text x="40" y="92" font-size="44" font-weight="700" font-family="Georgia, 'Times New Roman', serif" fill="#10233c">Sandbox pricing simulation</text>
+    <text x="40" y="128" font-size="23" font-family="Segoe UI, Arial, sans-serif" fill="#486177">
+      Tune commercial inputs, run a projection, and compare the proposed outcome before saving.
+    </text>
+
+    <g transform="translate(40 170)">
+      <rect x="0" y="0" width="340" height="94" rx="22" fill="#ffffff" stroke="#dbe3ea"/>
+      <text x="22" y="28" font-size="14" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#486177" letter-spacing="1.5">QUANTITY</text>
+      <text x="22" y="68" font-size="34" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#10233c">180</text>
+    </g>
+    <g transform="translate(404 170)">
+      <rect x="0" y="0" width="340" height="94" rx="22" fill="#ffffff" stroke="#dbe3ea"/>
+      <text x="22" y="28" font-size="14" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#486177" letter-spacing="1.5">REGION</text>
+      <text x="22" y="68" font-size="34" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#10233c">EMEA</text>
+    </g>
+    <g transform="translate(768 170)">
+      <rect x="0" y="0" width="340" height="94" rx="22" fill="#ffffff" stroke="#dbe3ea"/>
+      <text x="22" y="28" font-size="14" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#486177" letter-spacing="1.5">PREMIUM SUPPORT</text>
+      <rect x="22" y="46" width="96" height="30" rx="15" fill="#1f8f67" opacity="0.18"/>
+      <text x="48" y="66" font-size="16" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1f8f67">ENABLED</text>
+    </g>
+
+    <g transform="translate(40 302)">
+      <rect x="0" y="0" width="440" height="164" rx="24" fill="#10233c"/>
+      <text x="24" y="30" font-size="14" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#d0d9e5" letter-spacing="1.8">PROJECTED OUTCOME</text>
+      <text x="24" y="94" font-size="62" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#ffffff">$3,975</text>
+      <rect x="24" y="112" width="164" height="30" rx="15" fill="#1f8f67" opacity="0.24"/>
+      <text x="50" y="132" font-size="16" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#9be2c7">+ $1,475 delta</text>
+    </g>
+
+    <g transform="translate(512 302)">
+      <rect x="0" y="0" width="596" height="164" rx="24" fill="#ffffff" stroke="#dbe3ea"/>
+      <text x="26" y="30" font-size="14" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#486177" letter-spacing="1.8">REPLAY NARRATIVE</text>
+      <text x="26" y="72" font-size="22" font-family="Segoe UI, Arial, sans-serif" fill="#10233c">Replay is using heuristic adjustments so the package remains</text>
+      <text x="26" y="104" font-size="22" font-family="Segoe UI, Arial, sans-serif" fill="#10233c">deployable without hard Revenue Cloud API dependencies.</text>
+      <rect x="26" y="122" width="170" height="28" rx="14" fill="#eef3fb"/>
+      <text x="52" y="141" font-size="15" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#486177">Heuristic Replay</text>
+    </g>
+
+    <g transform="translate(40 500)">
+      <rect x="0" y="0" width="1068" height="240" rx="24" fill="#ffffff" stroke="#dbe3ea"/>
+      <text x="26" y="30" font-size="14" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#486177" letter-spacing="1.8">REPLAY IMPACTS</text>
+
+      <line x1="48" y1="72" x2="48" y2="194" stroke="#d6dce3" stroke-width="4"/>
+      <circle cx="48" cy="78" r="9" fill="#10233c"/>
+      <circle cx="48" cy="118" r="9" fill="#1f8f67"/>
+      <circle cx="48" cy="158" r="9" fill="#1f8f67"/>
+      <circle cx="48" cy="198" r="9" fill="#1f8f67"/>
+
+      <text x="76" y="82" font-size="20" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#10233c">Current Price</text>
+      <text x="934" y="82" font-size="20" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#10233c">$2,500</text>
+
+      <text x="76" y="122" font-size="20" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1f8f67">Quantity Effect</text>
+      <text x="934" y="122" font-size="20" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1f8f67">+$1,200</text>
+
+      <text x="76" y="162" font-size="20" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1f8f67">Premium Support</text>
+      <text x="934" y="162" font-size="20" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1f8f67">+$200</text>
+
+      <text x="76" y="202" font-size="20" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1f8f67">Regional Price Context</text>
+      <text x="934" y="202" font-size="20" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1f8f67">+$75</text>
+    </g>
+  </g>
+</svg>

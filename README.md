@@ -1,3 +1,18 @@
+<p align="center">
+  <img src="docs/assets/banner.svg" alt="Pricing Trace Explorer banner" width="100%" />
+</p>
+
+<p align="center">
+  <strong>Revenue Cloud pricing observability for quote, order, and amendment workflows.</strong>
+</p>
+
+<p align="center">
+  <img alt="Salesforce DX" src="https://img.shields.io/badge/Salesforce%20DX-65.0-00A1E0?style=for-the-badge" />
+  <img alt="LWC" src="https://img.shields.io/badge/LWC-Portfolio%20UI-10233C?style=for-the-badge" />
+  <img alt="Apex" src="https://img.shields.io/badge/Apex-Service%20Layer-E36F3D?style=for-the-badge" />
+  <img alt="Revenue Cloud" src="https://img.shields.io/badge/Revenue%20Cloud-Observability-1F8F67?style=for-the-badge" />
+</p>
+
 # Pricing Trace Explorer
 
 An interview-grade Salesforce Revenue Cloud starter that turns opaque pricing behavior into a visible execution narrative.
@@ -7,6 +22,13 @@ This repo implements a portfolio-ready **Lightning Web Component + Apex service 
 > sellers, deal desk, and support teams cannot easily explain why a price changed.
 
 The component consolidates pricing execution, adjustments, tier logic, procedure decisions, and amendment-style deltas into one record-page experience. It is designed to be **safe to deploy in a generic org** while still becoming useful in a Revenue Cloud org through runtime object discovery.
+
+## Why recruiters stop scrolling
+
+- It addresses a real Revenue Cloud support and deal-desk problem instead of another CRUD sample.
+- It demonstrates architectural judgment: dynamic schema discovery, safe fallbacks, security enforcement, and UI storytelling.
+- It gives you a narrative that is easy to demo in under two minutes.
+- It is packaged to look like a polished product concept, not a scratch-org experiment.
 
 ## Why this stands out
 
@@ -31,6 +53,37 @@ It provides:
 - A replay console that simulates a headless repricing scenario without saving data.
 - A source-health panel that explains which trace objects were actually reachable in the org.
 - A risk radar for slow pricing paths, overlapping tiers, and ambiguous multi-execution traces.
+
+## Screenshots
+
+These are illustrated preview assets based on the shipped demo narrative, so the repo looks complete on GitHub before it is wired to a live org.
+
+<p align="center">
+  <img src="docs/assets/trace-overview.svg" alt="Pricing Trace Explorer overview" width="49%" />
+  <img src="docs/assets/replay-console.svg" alt="Pricing Trace Explorer replay console" width="49%" />
+</p>
+
+## Demo script
+
+### 30-second pitch
+
+> This project solves a common Revenue Cloud problem: pricing is powerful, but users cannot explain why a quote line, order item, or amendment repriced. I built a Pricing Trace Explorer that surfaces timeline execution, adjustments, tiers, procedure logic, and replayable scenarios in one LWC so sellers and analysts can trust the result.
+
+### 2-minute walkthrough
+
+1. Open the component in demo mode and start with the summary banner.
+2. Point to the commercial delta card and explain the business outcome first: old price, current price, and net delta.
+3. Move to the timeline and narrate how the price changed step by step from base price to final result.
+4. Open the adjustment and tier sections to show transparency into rule impacts and usage-based pricing.
+5. Use the procedure tree to explain that the UI is not just cosmetic, it is exposing engine decision logic.
+6. Open the replay console and show how a seller or analyst can simulate a pricing change before saving.
+7. Close on the source-health and risk-radar panels to show operational thinking, not just UI construction.
+
+### Interview framing
+
+If you are asked why this is architect-level work, use this answer:
+
+> Revenue Cloud already calculates prices, but the business often lacks observability. This project adds trust, faster triage, and lower escalation volume by making pricing behavior explainable across adjustments, tiers, procedures, and replay scenarios.
 
 ## Architecture
 

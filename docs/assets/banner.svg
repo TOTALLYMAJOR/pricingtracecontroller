@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">Pricing Trace Explorer</title>
+  <desc id="desc">A portfolio banner for a Salesforce Revenue Cloud pricing observability project.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7efe4"/>
+      <stop offset="55%" stop-color="#eef5f3"/>
+      <stop offset="100%" stop-color="#fcfaf4"/>
+    </linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10233c"/>
+      <stop offset="100%" stop-color="#213d63"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e36f3d"/>
+      <stop offset="100%" stop-color="#ef9966"/>
+    </linearGradient>
+    <linearGradient id="success" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f8f67"/>
+      <stop offset="100%" stop-color="#4eb68d"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#10233c" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="640" rx="30" fill="url(#bg)"/>
+  <circle cx="1140" cy="90" r="150" fill="#e36f3d" opacity="0.12"/>
+  <circle cx="1100" cy="570" r="190" fill="#1f8f67" opacity="0.09"/>
+  <circle cx="80" cy="90" r="120" fill="#10233c" opacity="0.06"/>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="60" width="1160" height="520" rx="28" fill="white" opacity="0.58"/>
+  </g>
+
+  <g transform="translate(96 112)">
+    <rect x="0" y="0" width="198" height="34" rx="17" fill="#10233c" opacity="0.08"/>
+    <text x="22" y="23" font-size="16" font-family="Segoe UI, Arial, sans-serif" fill="#486177" letter-spacing="2">REVENUE CLOUD</text>
+
+    <text x="0" y="96" font-size="64" font-weight="700" font-family="Georgia, 'Times New Roman', serif" fill="#10233c">
+      Pricing Trace Explorer
+    </text>
+    <text x="0" y="142" font-size="28" font-family="Segoe UI, Arial, sans-serif" fill="#486177">
+      Explain price changes with a timeline, tier logic, procedure trace,
+    </text>
+    <text x="0" y="178" font-size="28" font-family="Segoe UI, Arial, sans-serif" fill="#486177">
+      adjustment visibility, and replayable commercial scenarios.
+    </text>
+
+    <g transform="translate(0 236)">
+      <rect x="0" y="0" width="220" height="46" rx="23" fill="url(#hero)"/>
+      <text x="28" y="30" font-size="18" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="white">
+        LWC + Apex + Dynamic Describe
+      </text>
+
+      <rect x="236" y="0" width="182" height="46" rx="23" fill="#e36f3d" opacity="0.16"/>
+      <text x="266" y="30" font-size="18" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#a8562c">
+        Demo Mode Included
+      </text>
+
+      <rect x="434" y="0" width="206" height="46" rx="23" fill="#1f8f67" opacity="0.16"/>
+      <text x="462" y="30" font-size="18" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1f8f67">
+        Portfolio Ready Narrative
+      </text>
+    </g>
+
+    <g transform="translate(0 326)">
+      <text x="0" y="0" font-size="18" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#10233c">Why it matters</text>
+      <text x="0" y="34" font-size="22" font-family="Segoe UI, Arial, sans-serif" fill="#486177">
+        Revenue Cloud pricing is powerful but opaque. This project makes pricing
+      </text>
+      <text x="0" y="64" font-size="22" font-family="Segoe UI, Arial, sans-serif" fill="#486177">
+        behavior observable for sellers, deal desk, and support teams.
+      </text>
+    </g>
+  </g>
+
+  <g transform="translate(806 110)" filter="url(#shadow)">
+    <rect x="0" y="0" width="336" height="196" rx="24" fill="#fdfbf6"/>
+    <rect x="20" y="18" width="132" height="26" rx="13" fill="#10233c" opacity="0.08"/>
+    <text x="36" y="36" font-size="14" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#486177" letter-spacing="1.6">PRICING TIMELINE</text>
+
+    <circle cx="44" cy="76" r="8" fill="#10233c"/>
+    <circle cx="44" cy="118" r="8" fill="#1f8f67"/>
+    <circle cx="44" cy="160" r="8" fill="#e36f3d"/>
+    <line x1="44" y1="84" x2="44" y2="152" stroke="#d8dde6" stroke-width="3"/>
+
+    <text x="66" y="80" font-size="18" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#10233c">Base Price</text>
+    <text x="250" y="80" font-size="18" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#10233c">$2,500</text>
+    <text x="66" y="122" font-size="18" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1f8f67">Premium Support</text>
+    <text x="258" y="122" font-size="18" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1f8f67">+$200</text>
+    <text x="66" y="164" font-size="18" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#e36f3d">Legacy Incentive</text>
+    <text x="258" y="164" font-size="18" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#e36f3d">-$50</text>
+  </g>
+
+  <g transform="translate(760 328)" filter="url(#shadow)">
+    <rect x="0" y="0" width="226" height="168" rx="22" fill="#10233c"/>
+    <rect x="18" y="18" width="118" height="24" rx="12" fill="white" opacity="0.12"/>
+    <text x="34" y="35" font-size="14" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#e8eef5" letter-spacing="1.6">REPLAY</text>
+    <text x="20" y="72" font-size="17" font-family="Segoe UI, Arial, sans-serif" fill="#d0d9e5">Projected Price</text>
+    <text x="20" y="112" font-size="40" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="white">$3,975</text>
+    <rect x="20" y="126" width="116" height="24" rx="12" fill="#1f8f67" opacity="0.2"/>
+    <text x="38" y="143" font-size="14" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#9be2c7">+1,475 replay delta</text>
+  </g>
+
+  <g transform="translate(1006 328)" filter="url(#shadow)">
+    <rect x="0" y="0" width="180" height="168" rx="22" fill="#fff7ef"/>
+    <rect x="18" y="18" width="104" height="24" rx="12" fill="#e36f3d" opacity="0.16"/>
+    <text x="34" y="35" font-size="14" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#a8562c" letter-spacing="1.6">RISK RADAR</text>
+    <rect x="20" y="62" width="140" height="32" rx="10" fill="#fff1df"/>
+    <text x="32" y="83" font-size="15" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#a56c0e">Slow Pricing Path</text>
+    <rect x="20" y="104" width="140" height="32" rx="10" fill="#eef8f4"/>
+    <text x="32" y="125" font-size="15" font-weight="700" font-family="Segoe UI, Arial, sans-serif" fill="#1f8f67">5 live sources</text>
+  </g>
+</svg>
