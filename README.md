@@ -15,8 +15,6 @@
 
 # Pricing Trace Explorer
 
-An interview-grade Salesforce Revenue Cloud starter that turns opaque pricing behavior into a visible execution narrative.
-
 This repo implements a portfolio-ready **Lightning Web Component + Apex service layer** for one of the most common Revenue Cloud pain points:
 
 > sellers, deal desk, and support teams cannot easily explain why a price changed.
@@ -70,11 +68,6 @@ If you are using this repo in applications, portfolio reviews, or LinkedIn posts
 - [Demo workflow](docs/promo/demo-workflow.md)
 - [Application and LinkedIn copy](docs/promo/share-copy.md)
 
-## Demo script
-
-### 30-second pitch
-
-> This project solves a common Revenue Cloud problem: pricing is powerful, but users cannot explain why a quote line, order item, or amendment repriced. I built a Pricing Trace Explorer that surfaces timeline execution, adjustments, tiers, procedure logic, and replayable scenarios in one LWC so sellers and analysts can trust the result.
 
 ### 2-minute walkthrough
 
@@ -85,12 +78,6 @@ If you are using this repo in applications, portfolio reviews, or LinkedIn posts
 5. Use the procedure tree to explain that the UI is not just cosmetic, it is exposing engine decision logic.
 6. Open the replay console and show how a seller or analyst can simulate a pricing change before saving.
 7. Close on the source-health and risk-radar panels to show operational thinking, not just UI construction.
-
-### Interview framing
-
-If you are asked why this is architect-level work, use this answer:
-
-> Revenue Cloud already calculates prices, but the business often lacks observability. This project adds trust, faster triage, and lower escalation volume by making pricing behavior explainable across adjustments, tiers, procedures, and replay scenarios.
 
 ## Architecture
 
@@ -192,23 +179,4 @@ To upgrade it in a real implementation:
 2. Call the org’s preferred headless pricing endpoint or invocable action.
 3. Return the same `ReplayResponse` contract so the LWC remains unchanged.
 
-## Portfolio framing
-
-If a recruiter or hiring manager asks why this repo matters:
-
 > Revenue Cloud pricing engines are powerful but opaque. This project adds observability, analyst trust, and faster issue resolution by surfacing pricing execution, adjustments, tiering, and procedure logic in one place.
-
-That positions the repo as **architectural product thinking**, not just UI customization.
-
-## Known limitations
-
-- No live org is connected in this repo, so deployment and Apex compilation were not validated against a target org here.
-- Managed-package object and field names vary by implementation; this starter uses semantic candidate lists and safe fallback behavior.
-- The replay flow is intentionally heuristic until wired to a real pricing endpoint.
-
-## Next extensions
-
-- Replace heuristic replay with a real Revenue Cloud headless pricing action.
-- Add conflict detection for overlapping procedures and overridden adjustments.
-- Add a persistence layer for historical trace comparisons across quote, order, and amendment events.
-- Add screenshots or a short demo recording once deployed to a sample org.
